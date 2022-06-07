@@ -1,0 +1,12 @@
+// Fonte
+$fonte-padrao: 62.5%;
+$fonte-tipo: 'Inter', sans-serif;
+$cor-primaria: #212B36;
+$cor-secundaria: #EFF2F7;
+$cor-terciaria: #487680;
+
+@mixin padronizacao {
+  font-size: $fonte-padrao;
+  font-family: $fonte-tipo;
+  color: $cor-primaria;
+}

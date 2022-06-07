@@ -1,12 +1,13 @@
 /* eslint-disable array-callback-return */
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useEffect, useState } from "react";
+import React, { useEffect} from "react";
+import Header from "../../components/Header";
 import { IProduto, produtosInitial } from "../../mocks/estoque";
 import { ICarrinhoProduto } from "../../mocks/estoque";
 import "./index.scss";
 
-function Home() {
-  const [menuAtivo, setmenuAtivo] = useState(false);
+export function Home() {
+ 
 
   useEffect(() => {
     //Storage do Produto
@@ -72,57 +73,7 @@ function Home() {
   }
   return (
     <div>
-      <header>
-        <div className="cabecalho">
-          <div className="cabecalho__responsivo">
-            <div
-              onClick={() => setmenuAtivo((prevState) => !prevState)}
-              className="navMenu"
-            >
-              <span className="navMenu__hamburguer"></span>
-            </div>
-            <div className="cabecalho__marca">
-              <h1 className="cabecalho__marca__titulo">Reviva Fashion</h1>
-              <p className="cabecalho__marca__paragrafo">by RCHLO</p>
-            </div>
-            <a href="carrinho.html" className="cabecalho__carrinho">
-              <img
-                src={process.env.PUBLIC_URL + "./images/header/sacola2.png"}
-                alt=""
-              />
-            </a>
-          </div>
-        </div>
-      </header>
-      <nav className={`menu ${menuAtivo ? "menu--ativo" : ""}`}>
-        <ul className="menu__link">
-          <li>
-            <a className="menu__link__item" href="index.html">
-              Página Inicial
-            </a>
-          </li>
-          <li>
-            <a className="menu__link__item" href="#">
-              Moda Masculina
-            </a>
-          </li>
-          <li>
-            <a className="menu__link__item" href="#">
-              Moda Feminina
-            </a>
-          </li>
-          <li>
-            <a className="menu__link__item" href="#">
-              Moda Infantil
-            </a>
-          </li>
-          <li>
-            <a className="menu__link__item" href="#">
-              Manual de Moda
-            </a>
-          </li>
-        </ul>
-      </nav>
+     <Header />
       <div className="busca">
         <input
           type="search"

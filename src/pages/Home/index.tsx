@@ -8,7 +8,6 @@ import "./index.scss";
 
 export function Home() {
  
-
   useEffect(() => {
     //Storage do Produto
     const estoqueTemp = localStorage.getItem("Produtos");

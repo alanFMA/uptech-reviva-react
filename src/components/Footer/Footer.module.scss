@@ -1,0 +1,138 @@
+.rodape {
+  width: 100%;
+  background: #EFF2F7;
+  margin-top: 1.25rem;
+}
+
+.rodape__box {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  gap: 1.25rem;
+  width: 75vw;
+  margin: auto;
+  padding-top: 1rem;
+  font-size: 1.5rem;
+}
+
+.rodape__marca {
+  grid-column: span 4;
+}
+
+.rodape__marca__titulo {
+  font-size: 3rem;
+}
+
+.rodape__marca__paragrafo {
+  font-size: 1rem;
+  margin-left: 16.2rem;
+}
+
+.rodape__menu__item {
+  text-decoration: none;
+  color: #212B36;
+  line-height: 3rem;
+}
+
+.rodape__subtitulo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding-bottom: 1rem;
+}
+
+.redes-sociais__icones__item {
+  padding-right: 1.2rem;
+  max-width: 24px;
+  max-height: 24px;
+}
+
+.contato {
+  line-height: 2rem;
+}
+
+  @media only screen and (max-width: 992px) {
+    .rodape__box {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 0 5rem;
+      justify-content: space-between;
+    }
+  
+    .rodape__marca {
+      grid-column: span 3;
+      padding-bottom: 1.25rem;
+    }
+  
+    .newsletter {
+      grid-column: span 3;
+      justify-self: flex-end;
+      padding-bottom: 1rem;
+    }
+  }
+
+  @media only screen and (max-width: 768px) {
+    .rodape__box {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0 5rem;
+      justify-content: space-between;
+    }
+      
+    .rodape__marca {
+      grid-column: span 2;
+      padding-bottom: 1.25rem;
+    }
+      
+    .newsletter {
+      grid-column: span 2;
+      justify-self: flex-end;
+      padding-bottom: 1rem;
+    }
+  }
+
+  @media only screen and (max-width: 576px) {
+    .rodape {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0 5rem;
+    }
+  
+    .rodape__marca__titulo {
+      font-size: 1.5rem;
+    }
+  
+    .rodape__marca__paragrafo {
+      font-size: 0.8rem;
+      font-weight: bold;
+      margin-left: 6.7rem;
+    }
+  
+    .rodape__subtitulo {
+      text-align: center;
+    }
+  
+    .rodape__menu {
+      grid-column: span 2;
+      text-align: center;
+      padding-bottom: 3rem;
+    }
+  
+    .redes-sociais {
+      grid-column: span 2;
+      text-align: center;
+      padding-bottom: 3rem;
+    }
+  
+    .contato {
+      grid-column: span 2;
+      text-align: center;
+      padding-bottom: 3rem;
+    }
+  
+    .newsletter {
+      width: 100%;
+    }
+  
+    .newsletter input {
+      width: 65%;
+    }
+  }

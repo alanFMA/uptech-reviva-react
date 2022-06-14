@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import Nav from '../Nav'
+import Nav from '../Nav';
+import styles from './Header.module.scss'
 
 
 
@@ -8,19 +9,19 @@ const Header: React.FC = () => {
   return (
   <>  
     <header>
-    <div className="cabecalho">
-      <div className="cabecalho__responsivo">
+    <div className={styles.cabecalho}>
+      <div className={styles.cabecalho__responsivo}>
         <div
           onClick={() => setmenuAtivo((prevState) => !prevState)}
-          className="navMenu"
+          className={styles.navMenu}
         >
-          <span className="navMenu__hamburguer"></span>
+          <span className={styles.navMenu__hamburguer}></span>
         </div>
-        <div className="cabecalho__marca">
-          <h1 className="cabecalho__marca__titulo">Reviva Fashion</h1>
-          <p className="cabecalho__marca__paragrafo">by RCHLO</p>
+        <div className={styles.cabecalho__marca}>
+          <h1 className={styles.cabecalho__marca__titulo}>Reviva Fashion</h1>
+          <p className={styles.cabecalho__marca__paragrafo}>by RCHLO</p>
         </div>
-        <a href="carrinho.html" className="cabecalho__carrinho">
+        <a href="carrinho.html" className={styles.cabecalho__carrinho}>
           <img
             src={process.env.PUBLIC_URL + "./images/header/sacola2.png"}
             alt=""

@@ -1,81 +1,24 @@
 /* eslint-disable array-callback-return */
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useEffect} from "react";
+
+import { Footer } from "../../components/Footer";
 import Header from "../../components/Header";
-import { IProduto, produtosInitial } from "../../mocks/estoque";
-import { ICarrinhoProduto } from "../../mocks/estoque";
+import { Manual } from "../../components/Manual";
+import { ProductList } from "../../components/ProductList";
+import { produtosInitial } from "../../mocks/estoque";
 import "./index.scss";
 
+
+
 export function Home() {
- 
-  useEffect(() => {
-    //Storage do Produto
-    const estoqueTemp = localStorage.getItem("Produtos");
-
-    if (!estoqueTemp) {
-      localStorage.setItem("Produtos", JSON.stringify(produtosInitial));
-    }
-
-    //Storage do Carrinho
-    const carrinhoTemp = localStorage.getItem("Carrinho");
-
-    if (!carrinhoTemp) {
-      localStorage.setItem("Carrinho", JSON.stringify([]));
-    }
-  }, []);
-
-  const addCarrinho = function (id: number) {
-    const produtosTemp = JSON.parse(
-      localStorage.getItem("Produtos") as string
-    ) as IProduto[];
-    const carrinhoTemp = JSON.parse(
-      localStorage.getItem("Carrinho") as string
-    ) as ICarrinhoProduto[];
-  
-    const produto = produtosTemp.find((produto: IProduto):Boolean => {
-      return produto.id === id;
-    });
-  
-    if (produto && produto.quantidade_disponivel > 0) {
-      const produtoCarrinho = carrinhoTemp.find((produto: ICarrinhoProduto) => {
-        return produto.id === id;
-      });
-  
-      if (produtoCarrinho) {
-        produtoCarrinho.quantidade++;
-      } else {
-        const produtoParaAdicionar: ICarrinhoProduto = {
-          id: produto.id,
-          nome: produto.nome,
-          preco: produto.preco,
-          quantidade: 1,
-          imagem: produto.imagens
-        };
-        carrinhoTemp.push(produtoParaAdicionar);
-      }
-      localStorage.setItem(
-        "Carrinho",
-        JSON.stringify(carrinhoTemp)
-      );
-      console.table(carrinhoTemp);
-  
-      //Remover do estoque
-      produto.quantidade_disponivel--;
-      localStorage.setItem(
-        "Produtos",
-        JSON.stringify(produtosTemp)
-      );
-    } else {
-      alert("Produto sem estoque");
-    }
-  console.table(produtosTemp)
-  }
+  const productList1 = produtosInitial.filter(produto => produto.categoria === "lancamentos")
+  const productList2 = produtosInitial.filter(produto => produto.categoria === "verao")
   return (
     <div>
      <Header />
       <div className="busca">
         <input
-          type="search"
+          type="search" 
           name="busca__input"
           className="busca__input"
           placeholder="Faça sua busca aqui se já souber o que está procurando..."
@@ -91,171 +34,13 @@ export function Home() {
       </div>
       <main className="principal">
         <section className="vestuario">
-          <h2>Últimos lançamentos</h2>
-          <div id="ultimos-lancamentos" className="vestuario__grid">
-            {produtosInitial
-              .filter((produto) => {
-                if (produto.categoria === "lancamentos") {
-                  return produto;
-                }
-              })
-              .map((produto, indice) => (
-                <div key={produto.id} className="vestuario__grid__item">
-                  <div className="produto">
-                    <a href="detalhes.html">
-                      <img
-                        src={produto.imagens[0].url}
-                        className="produto__imagem"
-                        alt="Camisa"
-                      />
-                    </a>
-                    <fieldset className="produto__imagem__tamanho">
-                      <input
-                        type="radio"
-                        name={`tamanho${indice}`}
-                        id={`p${indice}`}
-                      />
-                      <button className="produto__imagem__tamanho__botao">
-                        <label htmlFor={`p${indice}`}>P</label>
-                      </button>
-                      <input
-                        type="radio"
-                        name={`tamanho${indice}`}
-                        id={`m${indice}`}
-                      />
-                      <button className="produto__imagem__tamanho__botao">
-                        <label htmlFor={`m${indice}`}>M</label>
-                      </button>
-                      <input
-                        type="radio"
-                        name={`tamanho${indice}`}
-                        id={`g${indice}`}
-                      />
-                      <button className="produto__imagem__tamanho__botao">
-                        <label htmlFor={`g${indice}`}>G</label>
-                      </button>
-                    </fieldset>
-                  </div>
-                  <p className="produto__imagem__descricao">{produto.nome}</p>
-                  <p className="produto__imagem__preco">{produto.preco}</p>
-                  <div onClick={() => addCarrinho(produto.id)} className="container__botao">
-                    <div className="botao__flip">
-                      <div className="botao__flip__sacola">
-                        <div className="botao__sacola__vazio"></div>
-                        <p className="botao__sacola__texto">POR NA SACOLA</p>
-                        <img
-                          src={process.env.PUBLIC_URL + "./images/shop.png"}
-                          className="botao__sacola__imagem"
-                          alt=""
-                        />
-                      </div>
-                      <div className="botao__flip__checked">
-                        <div className="botao__sacola__vazio"></div>
-                        <img
-                          src={
-                            process.env.PUBLIC_URL + "./images/check-img.png"
-                          }
-                          alt=""
-                        />
-                        <div className="botao__sacola__vazio"></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))}
-          </div>
+        <ProductList title='Últimos Lançamentos' products={productList1} />
         </section>
 
-        <section className="manual">
-          <div className="manual__vazio"></div>
-          <div className="manual__paragrafo">
-            <p className="manual__paragrafo__junto">
-              Fique por dentro de tudo que há de novidade no mundo da moda!
-            </p>
-            <p className="manual__paragrafo__espacado">
-              Baixe já o nosso manual de moda!
-            </p>
-          </div>
-          <div className="manual__marca">
-            <h3 className="manual__marca__titulo">Reviva Fashion</h3>
-            <p className="manual__marca__paragrafo">by RCHLO</p>
-          </div>
-        </section>
+        <Manual />
 
         <section className="vestuario">
-          <h2>Coleção de verão</h2>
-          <div className="vestuario__grid">
-            {produtosInitial
-              .filter((produto) => {
-                if (produto.categoria === "verao") {
-                  return produto;
-                }
-              })
-              .map((produto, indice) => (
-                <div key={produto.id} className="vestuario__grid__item">
-                  <div className="produto">
-                    <a href="detalhes.html">
-                      <img
-                        src={produto.imagens[0].url}
-                        className="produto__imagem"
-                        alt="Camisa"
-                      />
-                    </a>
-                    <fieldset className="produto__imagem__tamanho">
-                      <input
-                        type="radio"
-                        name={`tamanho${indice}`}
-                        id={`p${indice}`}
-                      />
-                      <button className="produto__imagem__tamanho__botao">
-                        <label htmlFor={`p${indice}`}>P</label>
-                      </button>
-                      <input
-                        type="radio"
-                        name={`tamanho${indice}`}
-                        id={`m${indice}`}
-                      />
-                      <button className="produto__imagem__tamanho__botao">
-                        <label htmlFor={`m${indice}`}>M</label>
-                      </button>
-                      <input
-                        type="radio"
-                        name={`tamanho${indice}`}
-                        id={`g${indice}`}
-                      />
-                      <button className="produto__imagem__tamanho__botao">
-                        <label htmlFor={`g${indice}`}>G</label>
-                      </button>
-                    </fieldset>
-                  </div>
-                  <p className="produto__imagem__descricao">{produto.nome}</p>
-                  <p className="produto__imagem__preco">{produto.preco}</p>
-                  <div onClick={() => addCarrinho(produto.id)} className="container__botao">
-                    <div className="botao__flip">
-                      <div className="botao__flip__sacola">
-                        <div className="botao__sacola__vazio"></div>
-                        <p className="botao__sacola__texto">POR NA SACOLA</p>
-                        <img
-                          src={process.env.PUBLIC_URL + "./images/shop.png"}
-                          className="botao__sacola__imagem"
-                          alt=""
-                        />
-                      </div>
-                      <div className="botao__flip__checked">
-                        <div className="botao__sacola__vazio"></div>
-                        <img
-                          src={
-                            process.env.PUBLIC_URL + "./images/check-img.png"
-                          }
-                          alt=""
-                        />
-                        <div className="botao__sacola__vazio"></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))}
-          </div>
+        <ProductList title='Coleção de Verão' products={productList2} />  
         </section>
 
         <section className="blog">
@@ -323,88 +108,7 @@ export function Home() {
           </div>
         </section>
       </main>
-      <footer className="rodape">
-        <div className="rodape__box">
-          <div className="rodape__marca">
-            <h3 className="rodape__marca__titulo">Reviva Fashion</h3>
-            <p className="rodape__marca__paragrafo">by RCHLO</p>
-          </div>
-          <div className="rodape__menu">
-            <ul className="rodape__menu__lista">
-              <p className="rodape__subtitulo">Menu</p>
-              <li>
-                <a href="#" className="rodape__menu__item">
-                  Página Inicial
-                </a>
-              </li>
-              <li>
-                <a href="#" className="rodape__menu__item">
-                  Moda Masculina
-                </a>
-              </li>
-              <li>
-                <a href="#" className="rodape__menu__item">
-                  Moda Feminina
-                </a>
-              </li>
-              <li>
-                <a href="#" className="rodape__menu__item">
-                  Moda Infantil
-                </a>
-              </li>
-            </ul>
-          </div>
-          <div className="redes-sociais">
-            <p className="rodape__subtitulo">Siga-nos nas redes sociais</p>
-            <div className="redes-sociais__icones">
-              <img
-                src={process.env.PUBLIC_URL + "./images/socials/face.svg"}
-                className="redes-sociais__icones__item"
-                alt="face"
-              />
-              <img
-                src={process.env.PUBLIC_URL + "./images/socials/twitter.svg"}
-                className="redes-sociais__icones__item"
-                alt="twitter"
-              />
-              <img
-                src={process.env.PUBLIC_URL + "./images/socials/insta.svg"}
-                className="redes-sociais__icones__item"
-                alt="insta"
-              />
-              <img
-                src={process.env.PUBLIC_URL + "./images/socials/youtube.svg"}
-                className="redes-sociais__icones__item"
-                alt="youtube"
-              />
-            </div>
-          </div>
-          <div className="contato">
-            <p className="rodape__subtitulo">Entre em contato</p>
-            <p>Contato</p>
-            <a href="mailto:reviva@rchlo.com.br">reviva@rchlo.com.br</a>
-            <p>
-              Whatsapp{" "}
-              <img
-                src={process.env.PUBLIC_URL + "./images/socials/whatsapp.svg"}
-                alt=""
-              />
-            </p>
-            <p>
-              11 2123-3321{" "}
-              <img
-                src={process.env.PUBLIC_URL + "./images/socials/phone.svg"}
-                alt=""
-              />
-            </p>
-          </div>
-          <div className="newsletter">
-            <p className="rodape__subtitulo">Assine nossa newsletter</p>
-            <input type="text" name="newsletter" id="newsletter" />
-            <button id="newsletter">ASSINAR JÁ</button>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

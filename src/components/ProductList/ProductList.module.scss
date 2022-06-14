@@ -1,0 +1,150 @@
+@import '../../common/style/variaveis';
+
+.vestuario__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 1.875rem;
+}
+
+.produto {
+  width: 100%;
+  border: 1px solid #c5c5c5;
+  display: flex;
+  flex-direction: column;
+}
+
+.produto__imagem {
+  width: 100%;
+  object-fit: cover;
+  padding: 1.25rem 0;
+  align-self: center;
+}
+
+.produto__imagem__tamanho {
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: row;
+}
+
+.produto__imagem__tamanho input[type="radio"] {
+  display: none;
+}
+
+.produto__imagem__tamanho input[type="radio"]:checked + button {
+  background-color: #487680;
+  color: white;
+  font-weight: bold;
+}
+
+.produto__imagem__tamanho__botao {
+  font-size: 1.5rem;
+  margin: 0 0.576rem 0.313rem 0;
+  padding: 0.313rem 0.576rem;
+  border: 1px solid #bbb;
+}
+
+.produto__imagem__descricao, 
+.produto__imagem__preco, 
+.botao__sacola {
+  margin-top: 1rem;
+}
+
+.botao__sacola__imagem {
+  margin-right: 1.5rem;
+}
+
+.produto__imagem__preco {
+  color: #888;
+  font-weight: bolder;
+}
+
+.container__botao {
+  margin-top: 1rem;
+  width: 100%;
+  height: 5vh;
+  float: left;
+  perspective: 500px;
+}
+
+.botao__flip {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+
+  transition: transform 1s;
+  transform-style: preserve-3d;
+}
+
+.container__botao:hover .botao__flip {
+  transform: rotateY( 180deg ) ;
+  transition: transform 0.5s;
+}
+
+.botao__flip__sacola,
+.botao__flip__checked {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: white;
+  text-align: center;
+  border-radius: 5px;
+  backface-visibility: hidden;
+}
+
+
+.botao__flip__checked {
+  background: #EFF2F7;
+  color: white;
+  transform: rotateY( 180deg );
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #bbb;
+}
+
+.botao__flip__checked:active {
+  background: #e0e0e0;
+}
+.botao__flip__sacola {
+  position: absolute;
+  width: 100%;
+  height: 5vh;
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #487680;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+.botao__sacola__vazio {
+  width: 24px;
+  height: 24px;
+}
+
+  @media only screen and (max-width: 992px) {
+  .vestuario__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media only screen and (max-width: 576px) {
+
+    .vestuario__grid {
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+  
+    .produto__imagem__tamanho__botao {
+      margin-left: 0.5rem;
+    }
+  
+    .produto__imagem {
+      width: 75vw;
+    }
+  }

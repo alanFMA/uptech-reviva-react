@@ -1,0 +1,85 @@
+@import '../../common/style/base';
+@import '../../common/style/variaveis';
+
+header {
+  padding: 1.25rem 0;
+}
+
+.cabecalho {
+  display: flex;
+  justify-content: space-between;
+	position: relative;
+	width: 75vw;
+  padding: 1.25rem 0;
+	margin: 0 auto;
+}
+
+.cabecalho__responsivo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 75vw;
+}
+
+.navMenu {
+  grid-column: span 2;
+}
+
+.cabecalho__marca {
+  width: 25vw;
+}
+
+.cabecalho__marca__titulo {
+  font-size: 3rem;
+}
+
+.cabecalho__marca__paragrafo {
+  margin-left: 16.2rem;
+}
+
+.cabecalho__carrinho {
+  justify-self: flex-end;
+}
+
+@media only screen and (max-width: 992px) {
+
+  .cabecalho__marca {
+    width: 45vw;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+
+  header {
+    padding-bottom: 0;
+  }
+
+  .cabecalho__responsivo {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .cabecalho__marca {
+    display: grid;
+    justify-content: center;
+  }
+
+  .cabecalho__marca__titulo {
+    font-size: 1.7rem;
+    text-align: center;
+  }
+
+  .cabecalho__marca__paragrafo {
+    font-size: 0.7rem;
+    font-weight: bold;
+    margin-left: 8.5rem;
+  }
+
+  .navMenu {
+    grid-column: span 1;
+  }
+
+  .navMenu::after {
+    content: url(../../../public/images/menu.png);
+  }
+
+}

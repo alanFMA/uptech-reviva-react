@@ -1,0 +1,87 @@
+.principal {
+  width: 100%;
+  margin: 5rem auto;
+  font-size: 1.3rem;
+}
+h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  width: 75vw;
+  margin: 0 auto 2rem auto;
+}
+.box {
+  display: flex;
+  flex-direction: column;
+  width: 75vw;
+  margin: 0 auto;
+}
+.carrinho {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  padding-top: 1rem;
+}
+.carrinho__grid {
+  display: grid;
+  grid-template-columns: repeat(6, auto);
+  gap: 0 1.5rem;
+  margin-bottom: 3rem;
+}
+.carrinho__grid__titulo {
+  font-weight: bold;
+  padding-bottom: 1rem;
+}
+.carrinho__grid__imagem {
+  width: 160px;
+  height: 160px;
+  border: 1px solid #EFF2F7;
+  text-align: center;
+}
+.carrinho__grid__imagem img {
+  width: 100%;
+}
+.carrinho__grid__tamanho__select {
+  display: flex;
+  flex-direction: row;
+}
+.carrinho__grid__tamanho__select button {
+  margin-left: 1rem;
+}
+.carrinho__grid__tamanho__select input[type=radio] {
+  display: none;
+}
+.carrinho__grid__tamanho__select input[type=radio]:checked + button {
+  background-color: #487680;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.carrinho__grid__valor {
+  color: #888;
+  font-weight: bolder;
+}
+.carrinho__quantidade #qtd {
+  width: 60px;
+  font-size: 1.7rem;
+}
+.total {
+  width: 20%;
+  height: 100%;
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  grid-auto-rows: min-content;
+  justify-content: space-between;
+  gap: 2rem;
+  background: #EFF2F7;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.total__titulo {
+  grid-column: span 2;
+}
+.total__botao {
+  grid-column: span 3;
+  margin-top: 10rem;
+}

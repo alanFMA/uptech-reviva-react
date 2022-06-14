@@ -1,0 +1,79 @@
+@import '../../common/style/variaveis';
+
+.manual {
+  width: 75vw;
+  height: 20vh;
+  margin: 1.25rem auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  background: $cor-secundaria;
+}
+
+.manual__paragrafo {
+  padding: 1rem 0;
+}
+
+.manual__paragrafo__junto {
+  letter-spacing: -0.109rem;
+}
+
+.manual__paragrafo__espacado{
+  letter-spacing: 0.516rem;
+}
+
+.manual__marca {
+  align-self: flex-end;
+  text-align: right;
+  padding-right: 0.188rem;
+}
+
+.manual__marca__titulo {
+  font-size: 3rem;
+}
+
+.manual__marca__paragrafo {
+  font-size: 1rem;
+  padding-bottom: 0.188rem;
+}
+
+  @media only screen and (max-width: 992px) {
+
+    .manual__marca__titulo {
+      font-size: 1.7rem;
+    }
+
+    .manual__marca__paragrafo {
+      font-size: 0.7rem;
+    }
+  }
+
+  @media only screen and (max-width: 768px) {
+    .manual__marca__titulo {
+      font-size: 3rem;
+    }
+  }
+  
+  @media only screen and (max-width: 576px) {
+
+    .manual {
+      height: 30vh;
+    }
+
+    .manual__paragrafo {
+      text-align: center;
+    }
+  
+    .manual__paragrafo__junto {
+      padding-bottom: 1rem;
+    }
+  
+    .manual__paragrafo__espacado {
+      padding-bottom: 2rem;
+    }
+  
+    .manual__marca__titulo {
+      font-size: 2rem;
+    }
+  }

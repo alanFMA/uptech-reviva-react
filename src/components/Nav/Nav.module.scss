@@ -1,0 +1,55 @@
+@import '../../common/style/variaveis';
+
+.menu {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  background: $cor-secundaria;
+  border: 1px solid #f0f0f0;
+  height: 6vh;
+  margin: 1.25rem 0;
+}
+
+.menu__link {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 75vw;
+}
+
+.menu__link__item {
+  cursor: pointer;
+  color: #212B36;
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.menu__link__item:hover {
+  text-shadow: 0.1em 0.1em 0.2em #a5a5a5;
+}
+
+@media only screen and (max-width: 768px) {
+
+  .menu {
+      display: flex;
+      position: absolute;
+      flex-direction: column;
+      background-color: #EFF2F7;
+      width: 48vw;
+      height: 30vh;
+      left: -110vw;
+      transition: .25s;
+  }
+
+  .menu--ativo {
+    left: 0;
+    transition: .25s;
+  }
+
+  .menu__link {
+    flex-direction: column;
+    height: 100%;
+  }
+} 

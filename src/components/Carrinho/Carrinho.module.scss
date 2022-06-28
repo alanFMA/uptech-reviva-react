@@ -33,7 +33,6 @@ h2 {
 }
 .carrinho__grid__imagem {
   width: 160px;
-  height: 160px;
   border: 1px solid #EFF2F7;
   text-align: center;
 }
@@ -66,11 +65,11 @@ h2 {
   font-size: 1.7rem;
 }
 .total {
-  width: 20%;
+  width: 25%;
   height: 100%;
   padding: 1rem;
   display: grid;
-  grid-template-columns: repeat(3, auto);
+  grid-template-columns: 1fr 1fr;
   grid-auto-rows: min-content;
   justify-content: space-between;
   gap: 2rem;
@@ -79,9 +78,14 @@ h2 {
   font-weight: bold;
 }
 .total__titulo {
+  grid-column: span 1;
+}
+
+.calc__subtotal {
   grid-column: span 2;
 }
+
 .total__botao {
-  grid-column: span 3;
+  grid-column: span 2;
   margin-top: 10rem;
 }

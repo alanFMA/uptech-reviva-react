@@ -1,6 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { RecoilRoot } from 'recoil';
 import { Cart } from './pages/Cart';
+import Home from './pages/Home';
+
 // import Home from './pages/Home';
 
 
@@ -9,6 +12,9 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <Cart />
+    <RecoilRoot>
+      <Home />
+      <Cart />
+    </RecoilRoot>
   </React.StrictMode>
 );

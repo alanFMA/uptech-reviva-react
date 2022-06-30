@@ -1,5 +1,5 @@
 import styles from './Carrinho.module.scss';
-import { cart } from '../../store/cart';
+import { cart } from 'store/cart';
 import { useRecoilState } from 'recoil';
 
 

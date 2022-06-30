@@ -1,13 +1,13 @@
 /* eslint-disable array-callback-return */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 
-import { Footer } from "../../components/Footer";
-import Header from "../../components/Header";
-import { Manual } from "../../components/Manual";
-import { ProductList } from "../../components/ProductList";
+import { Footer } from "components/Footer";
+import Header from "components/Header";
+import { Manual } from "components/Manual";
+import { ProductList } from "components/ProductList";
 import { useRecoilValue } from "recoil";
 import "./index.scss";
-import { productsListState } from "../../store/products";
+import { productsListState } from "store/products";
 
 
 

@@ -1,18 +1,20 @@
 /* eslint-disable array-callback-return */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 
-import { Footer } from "../../components/Footer";
-import Header from "../../components/Header";
-import { Manual } from "../../components/Manual";
-import { ProductList } from "../../components/ProductList";
-import { produtosInitial } from "../../mocks/estoque";
+import { Footer } from "components/Footer";
+import Header from "components/Header";
+import { Manual } from "components/Manual";
+import { ProductList } from "components/ProductList";
+import { useRecoilValue } from "recoil";
 import "./index.scss";
+import { productsListState } from "store/products";
 
 
 
 export function Home() {
-  const productList1 = produtosInitial.filter(produto => produto.categoria === "lancamentos")
-  const productList2 = produtosInitial.filter(produto => produto.categoria === "verao")
+  const productList = useRecoilValue(productsListState);
+  const productList1 = productList.filter(produto => produto.categoria === "lancamentos")
+  const productList2 = productList.filter(produto => produto.categoria === "verao")
   return (
     <div>
      <Header />

@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import classNames from 'classnames';
-import styles from './Nav.module.scss'
+import { Link } from 'react-router-dom';
+import styles from './Nav.module.scss';
 
 interface IProps {
   menuAtivo: boolean;
@@ -14,9 +15,9 @@ const Nav: React.FC <IProps> = ({menuAtivo}: IProps) => {
     })}>
     <ul className={styles.menu__link}>
         <li>
-            <a className={styles.menu__link__item} href="index.html">
+            <Link className={styles.menu__link__item} to="/">
               Página Inicial
-            </a>
+            </Link>
           </li>
           <li>
             <a className={styles.menu__link__item} href="#">

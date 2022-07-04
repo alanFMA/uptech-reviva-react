@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Nav from '../Nav';
 import styles from './Header.module.scss'
+import { Link } from 'react-router-dom';
 
 
 
@@ -21,12 +22,12 @@ const Header: React.FC = () => {
           <h1 className={styles.cabecalho__marca__titulo}>Reviva Fashion</h1>
           <p className={styles.cabecalho__marca__paragrafo}>by RCHLO</p>
         </div>
-        <a href="carrinho.html" className={styles.cabecalho__carrinho}>
+        <Link to={"/cart"} className={styles.cabecalho__carrinho}>
           <img
             src={process.env.PUBLIC_URL + "./images/header/sacola2.png"}
             alt=""
           />
-        </a>
+        </Link>
       </div>
     </div>
     </header>

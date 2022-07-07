@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import { ICarrinhoProduto, IProduto } from "../../mocks/interface";
 import { cart } from "../../store/cart";
@@ -13,7 +14,7 @@ export const ProductList = ({ title, products }: ProductListProps) => {
   const [ carrinho, setCarrinho ] = useRecoilState(cart);
   const [ inventory, setInventory ] = useRecoilState(productsListState)
 
-  const addCarrinho = function (product: IProduto) {
+ const addCarrinho = function (product: IProduto) {
     if (product && product.quantidade_disponivel > 0) {
       const foundCarrinho = carrinho.findIndex((produto: ICarrinhoProduto) => {
         return produto.id === product.id;
@@ -56,13 +57,13 @@ export const ProductList = ({ title, products }: ProductListProps) => {
         {products.map((produto, indice) => (
           <div key={produto.id} className={styles.vestuario__grid__item}>
             <div className={styles.produto}>
-              <a href="detalhes.html">
+              <Link to={`/details/${produto.id}`}>
                 <img
                   src={produto.imagens[0].url}
                   className={styles.produto__imagem}
                   alt="Camisa"
                 />
-              </a>
+              </Link>
               <fieldset className={styles.produto__imagem__tamanho}>
                 <input
                   type="radio"

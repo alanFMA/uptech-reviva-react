@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Nav from '../Nav';
 import styles from './Header.module.scss'
 import { Link } from 'react-router-dom';
+import SacolaIcon from 'assets/img/sacola2.png'
 
 
 
@@ -24,7 +25,7 @@ const Header: React.FC = () => {
         </div>
         <Link to={"/cart"} className={styles.cabecalho__carrinho}>
           <img
-            src={process.env.PUBLIC_URL + "./images/header/sacola2.png"}
+            src={SacolaIcon}
             alt=""
           />
         </Link>

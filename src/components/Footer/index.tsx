@@ -1,5 +1,11 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import styles from './Footer.module.scss'
+import FaceIcon from 'assets/img/face.svg'
+import TwitterIcon  from 'assets/img/twitter.svg'
+import YoutubeIcon  from 'assets/img/youtube.svg'
+import InstagramIcon  from 'assets/img/insta.svg'
+import WhatsappIcon  from 'assets/img/whatsapp.svg'
+import PhoneIcon  from 'assets/img/phone.svg'
 
 export const Footer = () => {
   return (
@@ -38,22 +44,22 @@ export const Footer = () => {
             <p className={styles.rodape__subtitulo}>Siga-nos nas redes sociais</p>
             <div className={styles["redes-sociais__icones"]}>
               <img
-                src={process.env.PUBLIC_URL + "./images/socials/face.svg"}
+                src={FaceIcon}
                 className={styles["redes-sociais__icones__item"]}
                 alt="face"
               />
               <img
-                src={process.env.PUBLIC_URL + "./images/socials/twitter.svg"}
+                src={TwitterIcon}
                 className={styles["redes-sociais__icones__item"]}
                 alt="twitter"
               />
               <img
-                src={process.env.PUBLIC_URL + "./images/socials/insta.svg"}
+                src={InstagramIcon}
                 className={styles["redes-sociais__icones__item"]}
                 alt="insta"
               />
               <img
-                src={process.env.PUBLIC_URL + "./images/socials/youtube.svg"}
+                src={YoutubeIcon}
                 className={styles["redes-sociais__icones__item"]}
                 alt="youtube"
               />
@@ -66,14 +72,14 @@ export const Footer = () => {
             <p>
               Whatsapp{" "}
               <img
-                src={process.env.PUBLIC_URL + "./images/socials/whatsapp.svg"}
+                src={WhatsappIcon}
                 alt=""
               />
             </p>
             <p>
               11 2123-3321{" "}
               <img
-                src={process.env.PUBLIC_URL + "./images/socials/phone.svg"}
+                src={PhoneIcon}
                 alt=""
               />
             </p>

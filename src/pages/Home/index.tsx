@@ -8,6 +8,7 @@ import { ProductList } from "components/ProductList";
 import { useRecoilValue } from "recoil";
 import "./index.scss";
 import { productsListState } from "store/products";
+import LupaIcon from 'assets/img/lupa.svg'
 
 
 
@@ -27,7 +28,7 @@ export function Home() {
         />
         <button className="busca__botao">
           <img
-            src={process.env.PUBLIC_URL + "./images/lupa.svg"}
+            src={LupaIcon}
             id="btnBusca"
             className="busca__botao__lupa"
             alt="Buscar"

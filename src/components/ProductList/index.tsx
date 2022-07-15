@@ -1,8 +1,7 @@
+import { useContextDataCart } from "hooks/useContextCart";
+import { useContextDataProduct } from "hooks/useContextProducts";
 import { Link } from "react-router-dom";
-import { useRecoilState } from "recoil";
 import { ICarrinhoProduto, IProduto } from "../../mocks/interface";
-import { cart } from "../../store/cart";
-import { productsListState } from "../../store/products";
 import styles from "./ProductList.module.scss";
 
 interface ProductListProps {
@@ -11,25 +10,25 @@ interface ProductListProps {
 }
 
 export const ProductList = ({ title, products }: ProductListProps) => {
-  const [ carrinho, setCarrinho ] = useRecoilState(cart);
-  const [ inventory, setInventory ] = useRecoilState(productsListState)
+  const { dataCartValue, setDataCartValue } = useContextDataCart()
+  const { dataProductValue, setDataProductValue } = useContextDataProduct()
 
  const addCarrinho = function (product: IProduto) {
     if (product && product.quantidade_disponivel > 0) {
-      const foundCarrinho = carrinho.findIndex((produto: ICarrinhoProduto) => {
+      const foundCarrinho = dataCartValue.findIndex((produto: ICarrinhoProduto) => {
         return produto.id === product.id;
       })
-      const foundInventory = inventory.findIndex((productInventory: IProduto) => {
+      const foundInventory = dataProductValue.findIndex((productInventory: IProduto) => {
         return productInventory.id === product.id;
       })
       console.log(foundCarrinho);
 
       if (foundCarrinho >= 0) {
-        let newCart = JSON.parse(JSON.stringify(carrinho));
+        let newCart = JSON.parse(JSON.stringify(dataCartValue));
         console.log(newCart)
         newCart[foundCarrinho].quantidade++;
         console.log('estou aqui');
-        setCarrinho(newCart);
+        setDataCartValue(newCart);
         
       } else {
         console.log('im else')
@@ -40,12 +39,12 @@ export const ProductList = ({ title, products }: ProductListProps) => {
           quantidade: 1,
           imagem: product.imagens,
         };
-        setCarrinho([...carrinho, produtoParaAdicionar])
+        setDataCartValue([...dataCartValue, produtoParaAdicionar])
       }
-      let newInventory = JSON.parse(JSON.stringify(inventory));
+      let newInventory = JSON.parse(JSON.stringify(dataProductValue));
       console.log(newInventory);
       newInventory[foundInventory].quantidade_disponivel--;
-      setInventory(newInventory);
+      setDataProductValue(newInventory);
     } else {
       return window.alert('Produto não disponível')
     }

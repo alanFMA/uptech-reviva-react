@@ -1,6 +1,5 @@
 import { IProduto } from "mocks/interface"
 
-
 export const dataProduct: IProduto[] = [
   {
     id: 1,

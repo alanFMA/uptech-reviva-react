@@ -92,7 +92,7 @@ export const ProductList = ({ title, products }: ProductListProps) => {
               </fieldset>
             </div>
             <p className={styles.produto__imagem__descricao}>{produto.nome}</p>
-            <p className="produto__imagem__preco">{produto.preco}</p>
+            <p className="produto__imagem__preco">{produto.preco.toLocaleString('pt-br', { style: 'currency', currency: 'BRL'})}</p>
             <div
               onClick={() => addCarrinho(produto)}
               className={styles.container__botao}

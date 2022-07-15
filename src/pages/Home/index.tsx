@@ -5,17 +5,16 @@ import { Footer } from "components/Footer";
 import Header from "components/Header";
 import { Manual } from "components/Manual";
 import { ProductList } from "components/ProductList";
-import { useRecoilValue } from "recoil";
+import { useContextDataProduct } from "hooks/useContextProducts";
 import "./index.scss";
-import { productsListState } from "store/products";
 import LupaIcon from 'assets/img/lupa.svg'
 
 
 
 export function Home() {
-  const productList = useRecoilValue(productsListState);
-  const productList1 = productList.filter(produto => produto.categoria === "lancamentos")
-  const productList2 = productList.filter(produto => produto.categoria === "verao")
+  const { dataProductValue } = useContextDataProduct()
+  const productList1 = dataProductValue.filter(produto => produto.categoria === "lancamentos")
+  const productList2 = dataProductValue.filter(produto => produto.categoria === "verao")
   return (
     <div>
      <Header />

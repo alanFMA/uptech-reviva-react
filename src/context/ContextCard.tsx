@@ -15,10 +15,6 @@ export const ContextDataCart = createContext({} as ContextDataCartProviderProps)
 
 export const ContextDataCartProvider = ({children}:ChildrenProps) => {
   const [dataCartValue, setDataCartValue] = useState(dataCart);
-  
-  useEffect(() => {
-    setDataCartValue(dataCart);
-  }, []);
 
   return (
     <ContextDataCart.Provider value={{dataCartValue, setDataCartValue}}>

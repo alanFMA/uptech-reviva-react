@@ -1,35 +1,37 @@
 import styles from './Carrinho.module.scss';
-import { cart } from 'store/cart';
-import { useRecoilState } from 'recoil';
+//import { cart } from 'store/cart';
+//import { useRecoilState } from 'recoil';
+import { useContextDataCart } from 'hooks/useContextCart'
 
 
 
 export const Carrinho = () => {
-  const [cartAtual, setCartAtual] = useRecoilState(cart)
+  const { dataCartValue, setDataCartValue } = useContextDataCart()
+  //const [cartAtual, setCartAtual] = useRecoilState(cart)
 
   const onChangeFunc = (e: any) => {
-    cartAtual.forEach((item, x) => {
+    dataCartValue.forEach((item, x) => {
       // eslint-disable-next-line eqeqeq
       if(item.id == e.target.id){
         let object = {...item};
         object.quantidade = Number.parseInt(e.target.value);
         const pos = x;
-        const newArray = [...cartAtual];
+        const newArray = [...dataCartValue];
         newArray[pos] = object;
-        setCartAtual(newArray);
+        setDataCartValue(newArray);
         console.log('atualizou')
       }
     });
-
   }
+  console.log(dataCartValue, setDataCartValue)
 
   return (
     <>
     <main className={styles.principal}>
     <h2>Minha sacola</h2>
     <div className={styles.box}>
-      {cartAtual.map((product) => (
-        <div>
+      {dataCartValue.map((product) => (
+        <div key={product.id}>
           <div className={styles.carrinho__grid}>
             <div className={styles.carrinho__grid__imagem}>
               <img src={product.imagem[0].url} alt="" />
@@ -72,8 +74,8 @@ export const Carrinho = () => {
         ))}
         <div className={styles.total}>
             <p className={styles.total__titulo}>Total</p>
-            <p className={styles.calc__total}>R$ {cartAtual.map(p => p.quantidade * p.preco).reduce((totalSum, a) => (totalSum + a), 0).toFixed(2)}</p>
-            {cartAtual.map(prod => <p className={styles.calc__subtotal}>{prod.quantidade} x {prod.preco} = {Number((prod.quantidade * prod.preco).toFixed(2))}</p> )}
+            <p className={styles.calc__total}>R$ {dataCartValue.map(p => p.quantidade * p.preco).reduce((totalSum, a) => (totalSum + a), 0).toFixed(2)}</p>
+            {dataCartValue.map(prod => <p className={styles.calc__subtotal}>{prod.quantidade} x {prod.preco} = {Number((prod.quantidade * prod.preco).toFixed(2))}</p> )}
 
             <button className={styles.total__botao}>Ir para pagamento</button>
           </div>
